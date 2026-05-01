@@ -10,8 +10,8 @@ export function Hero() {
         height={1280}
         className="absolute inset-0 w-full h-full object-cover object-center"
       />
-      <div className="absolute inset-0 bg-navy/85" />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-transparent" />
+      <div className="absolute inset-0 bg-navy/80" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent" />
 
       <div className="relative w-full">
         <div className="container-prose pt-40 pb-16">
