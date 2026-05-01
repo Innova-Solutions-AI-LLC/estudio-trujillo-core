@@ -11,7 +11,7 @@ export function Founder() {
             width={1024}
             height={1024}
             loading="lazy"
-            className="w-full aspect-[4/5] object-cover object-[75%_center]"
+            className="w-full aspect-[4/5] object-contain bg-navy"
           />
           <span className="absolute -top-3 -left-3 w-24 h-px bg-gold" />
           <span className="absolute -bottom-3 -right-3 w-px h-24 bg-gold" />
