@@ -6,7 +6,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
   plugins: [
-    tanstackStart(), // must come before react()
+    tanstackStart({ prerender: { enabled: true } }), // must come before react()
     react(),
     tailwindcss(),
     tsconfigPaths({ projects: ['./tsconfig.json'] }),
