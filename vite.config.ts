@@ -5,6 +5,13 @@ import tailwindcss from '@tailwindcss/vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
+  environments: {
+    client: {
+      build: {
+        outDir: 'dist',
+      },
+    },
+  },
   plugins: [
     tanstackStart({ prerender: { enabled: true } }), // must come before react()
     react(),
