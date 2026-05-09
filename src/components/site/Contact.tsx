@@ -10,12 +10,29 @@ const areas = [
   "Asesoramiento a Profesionales",
 ];
 
+type Status = "idle" | "loading" | "sent" | "error";
+
 export function Contact() {
-  const [sent, setSent] = useState(false);
-  const onSubmit = (e: FormEvent) => {
+  const [status, setStatus] = useState<Status>("idle");
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
+    setStatus("loading");
+    const data = Object.fromEntries(new FormData(e.currentTarget));
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Error");
+      setStatus("sent");
+      e.currentTarget.reset();
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
   };
 
   return (
@@ -67,10 +84,16 @@ export function Contact() {
           </Field>
           <button
             type="submit"
-            className="w-full bg-gold text-navy py-4 text-sm font-medium uppercase tracking-wider hover:bg-gold-soft transition-colors"
+            disabled={status === "loading" || status === "sent"}
+            className="w-full bg-gold text-navy py-4 text-sm font-medium uppercase tracking-wider hover:bg-gold-soft transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
           >
-            {sent ? "Consulta enviada" : "Enviar consulta"}
+            {status === "loading" ? "Enviando…" : status === "sent" ? "¡Consulta enviada!" : "Enviar consulta"}
           </button>
+          {status === "error" && (
+            <p className="text-center text-sm text-red-600 mt-2">
+              Hubo un error al enviar. Por favor intente nuevamente.
+            </p>
+          )}
         </form>
       </div>
 
