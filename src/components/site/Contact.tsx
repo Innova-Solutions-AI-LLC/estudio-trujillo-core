@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
 import { useState, type FormEvent } from "react";
 
 const areas = [
@@ -52,8 +52,8 @@ export function Contact() {
             {[
               { icon: Mail, label: "estudiotrujilloabogados@gmail.com", href: "mailto:estudiotrujilloabogados@gmail.com" },
               { icon: Phone, label: "+54 9 11 3246-3854", href: "tel:+5491132463854" },
-              { icon: MapPin, label: "Acoyte 1459, Buenos Aires" },
-              { icon: Instagram, label: "@davidtrujillo", href: "https://instagram.com/davidtrujillo" },
+              { icon: MapPin, label: "Larrea 1007 4B, CABA" },
+              { icon: Linkedin, label: "David Fernando Trujillo", href: "https://linkedin.com/in/david-fernando-trujillo-85394ab4" },
             ].map(({ icon: Icon, label, href }) => (
               <li key={label} className="flex items-center gap-4 text-paper/85">
                 <Icon className="w-5 h-5 text-gold shrink-0" strokeWidth={1.5} />

@@ -43,6 +43,11 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: appCss,
       },
+      {
+        rel: "icon",
+        type: "image/jpeg",
+        href: "/favicon.jpg",
+      },
     ],
   }),
   shellComponent: RootShell,
